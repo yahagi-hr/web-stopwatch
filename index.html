@@ -32,13 +32,16 @@
                 });
 
                 $('.timer_clear').click(function(){
-                    var clear_sid = '#' + $(this).attr('id');
-                    var counter_sid = clear_sid.split('_')[0] + '_counter';
-                    var ctl_sid = clear_sid.split('_')[0] + '_ctl';
-                    g_timer[ctl_sid]['time'] = 0;
-                    $(ctl_sid).val('start');
-                    $(counter_sid).html(g_timer[ctl_sid]['time']);
-                    clearInterval(g_timer[ctl_sid]['timer_id']);
+                    if (window.confirm('削除してよろしいですか？'))
+                    {
+                        var clear_sid = '#' + $(this).attr('id');
+                        var counter_sid = clear_sid.split('_')[0] + '_counter';
+                        var ctl_sid = clear_sid.split('_')[0] + '_ctl';
+                        g_timer[ctl_sid]['time'] = 0;
+                        $(ctl_sid).val('start');
+                        $(counter_sid).html(g_timer[ctl_sid]['time']);
+                        clearInterval(g_timer[ctl_sid]['timer_id']);
+                    }
                 });
 
                 $('.counter_plus').click(function(){
@@ -57,12 +60,13 @@
                 });
 
                 $('.counter_clear').click(function(){
-                    var clear_sid = '#' + $(this).attr('id');
-                    var counter_sid = clear_sid.split('_')[0];
-                    $(counter_sid).html(0);
+                    if (window.confirm('削除してよろしいですか？'))
+                    {
+                        var clear_sid = '#' + $(this).attr('id');
+                        var counter_sid = clear_sid.split('_')[0];
+                        $(counter_sid).html(0);
+                    }
                 });
-
-
             });
             
             function timer(ctl_sid)
