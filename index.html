@@ -39,7 +39,7 @@
                         var ctl_sid = clear_sid.split('_')[0] + '_ctl';
                         g_timer[ctl_sid]['time'] = 0;
                         $(ctl_sid).val('start');
-                        $(counter_sid).html(g_timer[ctl_sid]['time']);
+                        $(counter_sid).html(formatter(g_timer[ctl_sid]['time']));
                         clearInterval(g_timer[ctl_sid]['timer_id']);
                     }
                 });
@@ -73,7 +73,12 @@
             {
                 g_timer[ctl_sid]['time'] += 1;
                 counter_sid = ctl_sid.split('_')[0] + '_counter';
-                $(counter_sid).html(g_timer[ctl_sid]['time'] / 10.0);
+                $(counter_sid).html(formatter(g_timer[ctl_sid]['time'] / 10.0));
+            }
+
+            function formatter(value)
+            {
+                return value.toFixed(1);
             }
         </script>
         <style type='text/css'>
@@ -100,7 +105,7 @@
     <body>
         <div style='float: left'> 
         <div><input type='button' value='clear' class='timer_clear' id='timer1_clear'></div>
-        <div id='timer1_counter' class='timer_counter'>0</div>
+        <div id='timer1_counter' class='timer_counter'>0.0</div>
         <div><input type='button' value='start' class='timer_ctl' id='timer1_ctl'></div>
         <br>
 
@@ -113,7 +118,7 @@
         <div style='float: left'>
         
         <div><input type='button' value='clear' class='timer_clear' id='timer2_clear'></div>
-        <div id='timer2_counter' class='timer_counter'>0</div>
+        <div id='timer2_counter' class='timer_counter'>0.0</div>
         <div><input type='button' value='start' class='timer_ctl' id='timer2_ctl'></div>
         <br>
 
